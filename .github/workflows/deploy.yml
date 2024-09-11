@@ -5,7 +5,7 @@ on:
     
 jobs:
   clone:
-    name: clone test repo
+    name: clone test repo and run tests
     runs-on: ubuntu-latest
     steps:
     - name: Checkout private test repo
@@ -14,12 +14,7 @@ jobs:
         repository: arnesetzer/pelias_rrp_testcases
         ssh-key: ${{ secrets.DEPLOY_KEY }}
         ref: main
-  test:
-    needs: clone
-    name: run tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: cd correct dir
-        run: cd pelias_rrp_testcases
-      - name: run tests
-        run: docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
+    - name: cd correct dir
+      run: cd pelias_rrp_testcases
+    - name: run tests
+      run: docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
