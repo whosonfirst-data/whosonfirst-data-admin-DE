@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: arnesetzer/pelias_rrp_testcases
-        token: ${{ secrets.DEPLOY_KEY }}
+        ssh-key: ${{ secrets.DEPLOY_KEY }}
         ref: master
   test:
     needs: clone
