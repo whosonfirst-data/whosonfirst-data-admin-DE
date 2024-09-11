@@ -15,7 +15,5 @@ jobs:
         ssh-key: ${{ secrets.DEPLOY_KEY }}
         ref: main
         path: pelias_rrp_testcases
-    - name: cd correct dir
-      run: cd pelias_rrp_testcases
-    - name: run tests
-      run: ls -al && docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
+    - name: go in correct dir and run tests
+      run: cd pelias_rrp_testcases && docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
