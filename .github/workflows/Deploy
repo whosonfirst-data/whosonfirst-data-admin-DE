@@ -1,0 +1,16 @@
+name: Run test cases
+
+on:
+  [push]
+    
+jobs:
+  clone:
+    name: clone test repo
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout private tools
+      uses: actions/checkout@v4
+      with:
+        repository: arnesetzer/pelias_rrp_testcases
+        token: ${{ secrets.DEPLOY_KEY }}
+      run: cd pelias_rrp_testcases && docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
