@@ -13,7 +13,7 @@ jobs:
       with:
         repository: arnesetzer/pelias_rrp_testcases
         ssh-key: ${{ secrets.DEPLOY_KEY }}
-        ref: master
+        ref: main
   test:
     needs: clone
     name: run tests
