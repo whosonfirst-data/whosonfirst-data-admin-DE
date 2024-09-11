@@ -14,6 +14,7 @@ jobs:
         repository: arnesetzer/pelias_rrp_testcases
         ssh-key: ${{ secrets.DEPLOY_KEY }}
         ref: main
+        path: pelias_rrp_testcases
     - name: cd correct dir
       run: cd pelias_rrp_testcases
     - name: run tests
