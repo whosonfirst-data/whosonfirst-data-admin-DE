@@ -18,4 +18,4 @@ jobs:
     - name: cd correct dir
       run: cd pelias_rrp_testcases
     - name: run tests
-      run: docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
+      run: ls -al && docker run --rm -i -v './pelias.json:/code/pelias.json' -v './test_cases:/code/pelias/fuzzy-tester/test_cases' pelias/fuzzy-tester -e prod
