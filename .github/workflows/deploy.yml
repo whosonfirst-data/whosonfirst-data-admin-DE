@@ -13,6 +13,7 @@ jobs:
       with:
         repository: arnesetzer/pelias_rrp_testcases
         token: ${{ secrets.DEPLOY_KEY }}
+        ref: master
   test:
     needs: clone
     name: run tests
